@@ -1,5 +1,5 @@
 import unittest
-from statistics_service import StatisticsService
+from statistics_service import StatisticsService, SortBy
 from player import Player
 
 class PlayerReaderStub:
@@ -33,3 +33,21 @@ class TestStatisticsService(unittest.TestCase):
 
         self.assertEqual(str(first), 'Gretzky EDM 35 + 89 = 124')
         self.assertEqual(str(second), 'Lemieux PIT 45 + 54 = 99')
+
+    def test_top_goals(self):
+        two_best = self.stats.top(2, SortBy.GOALS)
+        first = two_best[0]
+        second = two_best[1]
+
+        self.assertEqual(str(first), 'Lemieux PIT 45 + 54 = 99')
+        self.assertEqual(str(second), 'Yzerman DET 42 + 56 = 98')
+
+    def test_top_assists(self):
+        # Unit test for 45 -> 48 still shows up as missing?
+        two_best = self.stats.top(2, SortBy.ASSISTS)
+        first = two_best[0]
+        second = two_best[1]
+
+        self.assertEqual(str(first), 'Gretzky EDM 35 + 89 = 124')
+        self.assertEqual(str(second), 'Yzerman DET 42 + 56 = 98')
+
