@@ -13,7 +13,7 @@ ${REGISTER_URL}  http://${SERVER}/register
 Open And Configure Browser
     ${options}  Evaluate  sys.modules['selenium.webdriver'].ChromeOptions()  sys
     # seuraava rivi on kommentoitu toistaiseksi pois
-    # Call Method  ${options}  add_argument  --headless
+    #Call Method  ${options}  add_argument  --headless
     Open Browser  browser=chrome  options=${options}
     Set Selenium Speed  ${DELAY}
 
@@ -25,6 +25,9 @@ Register Page Should Be Open
 
 Main Page Should Be Open
     Title Should Be  Ohtu Application main page
+
+Welcome Page Should Be Open
+    Title Should Be  Welcome to Ohtu Application!
 
 Go To Login Page
     Go To  ${LOGIN_URL}
