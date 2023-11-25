@@ -1,0 +1,4 @@
+Hyödyntämällä erilaisia retrospektiivitekniikoita tiimit ja niiden yksittäiset jäsenet saavat kuvan siitä miten projekti sujuu eri ihmisten näkökulmasta. Tämä on erityisen hyödyllistä koska eri tehtäviä tekevillä ihmisillä saattaa olla hyvin erilainen mielipide projektin käytäntöihin.
+
+Esimerkiksi "Glad, Sad, Mad" retrospektiivitekniikka perustuu siihen, että osallistujat tekevät projektiin liittyviä lyhyitä lappuja, jotka sopivat johonkin tekniikan nimen mukaisen tunteen alle. Osallistujat pääsevät selittämään lappunsa lyhyesti, ja saman aihepiiriin kuuluvia lappuja kasataan ryhmiin. Osallistujat pääsevät sitten äänestämään mistä lappuryhmästä haluaisivat keskustella. Näin tiimin jäsenet pääsevät kärryille muiden mielipiteistä ja projektin toimenpiteitä voidaan muokata niin, että projekti sujuu kaikilta paremmin. Tämän kaltaisiin retrospektiivitekniikoihin ei kulu tiimiltä paljon aikaa, mutta vaikutus voi kuitenkin olla suuri.
+
