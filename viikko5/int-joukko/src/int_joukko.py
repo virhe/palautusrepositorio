@@ -19,17 +19,8 @@ class IntJoukko:
         self.ljono = self._luo_lista(self.kapasiteetti)
         self.alkioiden_lkm = 0
 
-    def kuuluu(self, n):
-        on = 0
-
-        for i in range(0, self.alkioiden_lkm):
-            if n == self.ljono[i]:
-                on = on + 1
-
-        if on > 0:
-            return True
-        else:
-            return False
+    def kuuluu(self, numero):
+        return numero in self.ljono
 
     def lisaa(self, n):
         ei_ole = 0
