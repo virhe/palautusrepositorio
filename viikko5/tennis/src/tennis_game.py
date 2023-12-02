@@ -18,17 +18,18 @@ class TennisGame:
         temp_score: int = 0
 
         if self.player1_score == self.player2_score:
-            if self.player1_score == 0:
-                score = "Love-All"
-            elif self.player1_score == 1:
-                score = "Fifteen-All"
-            elif self.player1_score == 2:
-                score = "Thirty-All"
-            else:
-                score = "Deuce"
+            match self.player1_score:
+                case 0:
+                    score = "Love-All"
+                case 1:
+                    score = "Fifteen-All"
+                case 2:
+                    score = "Thirty-All"
+                case _:
+                    score = "Deuce"
 
         elif self.player1_score >= 4 or self.player2_score >= 4:
-            minus_result: int = self.player1_score - self. player2_score
+            minus_result: int = self.player1_score - self.player2_score
 
             if minus_result == 1:
                 score = "Advantage player1"
@@ -47,13 +48,14 @@ class TennisGame:
                     score = score + "-"
                     temp_score = self.player2_score
 
-                if temp_score == 0:
-                    score = score + "Love"
-                elif temp_score == 1:
-                    score = score + "Fifteen"
-                elif temp_score == 2:
-                    score = score + "Thirty"
-                elif temp_score == 3:
-                    score = score + "Forty"
+                match temp_score:
+                    case 0:
+                        score = score + "Love"
+                    case 1:
+                        score = score + "Fifteen"
+                    case 2:
+                        score = score + "Thirty"
+                    case 3:
+                        score = score + "Forty"
 
         return score
