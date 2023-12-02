@@ -3,32 +3,32 @@ class TennisGame:
     def __init__(self, player1_name: str, player2_name: str) -> None:
         self.player1_name: str = player1_name
         self.player2_name: str = player2_name
-        self.m_score1: int = 0
-        self.m_score2: int = 0
+        self.player1_score: int = 0
+        self.player2_score: int = 0
 
     def won_point(self, player_name: str) -> None:
         if player_name == "player1":
-            self.m_score1 = self.m_score1 + 1
+            self.player1_score = self.player1_score + 1
 
         else:
-            self.m_score2 = self.m_score2 + 1
+            self.player2_score = self.player2_score + 1
 
     def get_score(self) -> str: 
-        score: str
+        score: str = ""
         temp_score: int = 0
 
-        if self.m_score1 == self.m_score2:
-            if self.m_score1 == 0:
+        if self.player1_score == self.player2_score:
+            if self.player1_score == 0:
                 score = "Love-All"
-            elif self.m_score1 == 1:
+            elif self.player1_score == 1:
                 score = "Fifteen-All"
-            elif self.m_score1 == 2:
+            elif self.player1_score == 2:
                 score = "Thirty-All"
             else:
                 score = "Deuce"
 
-        elif self.m_score1 >= 4 or self.m_score2 >= 4:
-            minus_result = self.m_score1 - self. m_score2
+        elif self.player1_score >= 4 or self.player2_score >= 4:
+            minus_result: int = self.player1_score - self. player2_score
 
             if minus_result == 1:
                 score = "Advantage player1"
@@ -42,10 +42,10 @@ class TennisGame:
         else:
             for i in range(1, 3):
                 if i == 1:
-                    temp_score = self.m_score1
+                    temp_score = self.player1_score
                 else:
                     score = score + "-"
-                    temp_score = self.m_score2
+                    temp_score = self.player2_score
 
                 if temp_score == 0:
                     score = score + "Love"
