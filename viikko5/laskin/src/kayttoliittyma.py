@@ -12,36 +12,55 @@ class Summa():
     def __init__(self, sovelluslogiikka, lue_syote):
         self.sovelluslogiikka = sovelluslogiikka
         self.lue_syote = lue_syote
+        self.vanha_arvo = None
 
     def suorita(self):
+        self.vanha_arvo = self.sovelluslogiikka.arvo()
         self.sovelluslogiikka.plus(int(self.lue_syote()))
+
+    def kumoa(self):
+        if self.vanha_arvo is not None:
+            self.sovelluslogiikka.aseta_arvo(self.vanha_arvo)
 
 class Erotus():
     def __init__(self, sovelluslogiikka, lue_syote):
         self.sovelluslogiikka = sovelluslogiikka
         self.lue_syote = lue_syote
+        self.vanha_arvo = None
 
     def suorita(self):
+        self.vanha_arvo = self.sovelluslogiikka.arvo()
         self.sovelluslogiikka.miinus(int(self.lue_syote()))
+    
+    def kumoa(self):
+        if self.vanha_arvo is not None:
+            self.sovelluslogiikka.aseta_arvo(self.vanha_arvo)
 
 class Nollaus():
     def __init__(self, sovelluslogiikka, lue_syote):
         self.sovelluslogiikka = sovelluslogiikka
         self.lue_syote = lue_syote
+        self.vanha_arvo = None
 
     def suorita(self):
+        self.vanha_arvo = self.sovelluslogiikka.arvo()
         self.sovelluslogiikka.nollaa()
+    
+    def kumoa(self):
+        if self.vanha_arvo is not None:
+            self.sovelluslogiikka.aseta_arvo(self.vanha_arvo)
 
 
 class Kayttoliittyma:
     def __init__(self, sovelluslogiikka, root):
         self._sovelluslogiikka = sovelluslogiikka
         self._root = root
+        self._edellinen_syote = None
 
         self._komennot = {
             Komento.SUMMA: Summa(self._sovelluslogiikka, self._lue_syote),
             Komento.EROTUS: Erotus(self._sovelluslogiikka, self._lue_syote),
-            Komento.NOLLAUS: Nollaus(self._sovelluslogiikka, self._lue_syote),
+            Komento.NOLLAUS: Nollaus(self._sovelluslogiikka, self._lue_syote)
         }
 
     def kaynnista(self):
@@ -88,8 +107,14 @@ class Kayttoliittyma:
         return self._syote_kentta.get()
 
     def _suorita_komento(self, komento):
-        komento_olio = self._komennot[komento]
-        komento_olio.suorita()
+        if komento == Komento.KUMOA:
+            if self._edellinen_syote:
+                self._edellinen_syote.kumoa()
+                self._edellinen_syote = None
+        else:
+            komento_olio = self._komennot[komento]
+            komento_olio.suorita()
+            self._edellinen_syote = komento_olio
 
         self._kumoa_painike["state"] = constants.NORMAL
 
